@@ -5,6 +5,7 @@ import torchvision
 from base import BaseModel
 from utils.helpers import initialize_weights
 from itertools import chain
+from utils.helpers import initialize_weights, set_trainable
 
 '''
 -> BackBone Resnet_GCN
@@ -190,7 +191,7 @@ class BR_Block(nn.Module):
 
 class GCN(BaseModel):
     def __init__(self, num_classes, in_channels=3, pretrained=True, use_resnet_gcn=False, backbone='resnet50', use_deconv=False,
-                    num_filters=11, freeze_bn=False, **_):
+                    num_filters=11, freeze_bn=False, freeze_backbone=False, **_):
         super(GCN, self).__init__()
         self.use_deconv = use_deconv
         if use_resnet_gcn:

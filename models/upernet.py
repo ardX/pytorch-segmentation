@@ -5,6 +5,7 @@ from torchvision import models
 from base import BaseModel
 from utils.helpers import initialize_weights
 from itertools import chain
+from utils.helpers import initialize_weights, set_trainable
 
 class PSPModule(nn.Module):
     # In the original inmplementation they use precise RoI pooling 
@@ -118,7 +119,7 @@ class FPN_fuse(nn.Module):
 
 class UperNet(BaseModel):
     # Implementing only the object path
-    def __init__(self, num_classes, in_channels=3, backbone='resnet101', pretrained=True, use_aux=True, fpn_out=256, freeze_bn=False, **_):
+    def __init__(self, num_classes, in_channels=3, backbone='resnet101', pretrained=True, use_aux=True, fpn_out=256, freeze_bn=False, freeze_backbone=False, **_):
         super(UperNet, self).__init__()
 
         if backbone == 'resnet34' or backbone == 'resnet18':

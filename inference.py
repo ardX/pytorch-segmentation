@@ -98,7 +98,7 @@ def main():
 
     # Dataset used for training the model
     dataset_type = config['train_loader']['type']
-    assert dataset_type in ['VOC', 'COCO', 'CityScapes', 'ADE20K']
+    assert dataset_type in ['VOC', 'COCO', 'CityScapes', 'ADE20K', 'COKY']
     if dataset_type == 'CityScapes': 
         scales = [0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25] 
     else:
@@ -167,7 +167,7 @@ def parse_arguments():
                         help='Path to the images to be segmented')
     parser.add_argument('-o', '--output', default='outputs', type=str,  
                         help='Output Path')
-    parser.add_argument('-e', '--extension', default='jpg', type=str,
+    parser.add_argument('-e', '--extension', default='png', type=str,
                         help='The extension of the images to be segmented')
     args = parser.parse_args()
     return args

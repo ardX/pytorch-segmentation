@@ -7,6 +7,7 @@ from torchvision import models
 import torch.utils.model_zoo as model_zoo
 from utils.helpers import initialize_weights
 from itertools import chain
+from utils.helpers import initialize_weights, set_trainable
 
 ''' 
 -> Dense upsampling convolution block
@@ -212,7 +213,7 @@ class Decoder(nn.Module):
 '''
 
 class DeepLab_DUC_HDC(BaseModel):
-    def __init__(self, num_classes, in_channels=3, pretrained=True, output_stride=8, freeze_bn=False, **_):
+    def __init__(self, num_classes, in_channels=3, pretrained=True, output_stride=8, freeze_bn=False, freeze_backbone=False, **_):
         super(DeepLab_DUC_HDC, self).__init__()
 
         self.backbone = ResNet_HDC_DUC(in_channels=in_channels, output_stride=output_stride, pretrained=pretrained)

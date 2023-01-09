@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import models
 import torch.utils.model_zoo as model_zoo
-from utils.helpers import initialize_weights
+from utils.helpers import initialize_weights,set_trainable
 from itertools import chain
 
 ''' 

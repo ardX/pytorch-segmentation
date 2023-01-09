@@ -129,7 +129,7 @@ class BaseDataSet(Dataset):
         elif self.augment:
             image, label = self._augmentation(image, label)
 
-        label = torch.from_numpy(np.array(label, dtype=np.int32)).long()
+        label = torch.from_numpy(np.array(label, dtype=np.uint8)).long()
         image = Image.fromarray(np.uint8(image))
         if self.return_id:
             return  self.normalize(self.to_tensor(image)), label, image_id
